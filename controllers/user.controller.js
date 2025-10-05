@@ -1,5 +1,6 @@
 import UserModel from "../models/User.model.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export async function register(req, res) {
     try {
@@ -30,13 +31,15 @@ export async function login(req, res) {
                 return res.status(403).json({ "Message": "Invalid Password" });
             }
             // JWT token can be created here if needed
+            const token = jwt.sign({id:data._id}, 'SECRETKEY', {expiresIn: '1h'});
             res.status(200).json({
                 user: {
                     email: data.email,
                     fullName: data.fullName,
                 },
+                // accesstoken JWT token
+                accesstoken: token
             })
-            // accesstoken JWT token
         } else {
             return res.status(404).json({ "Message": "User doesn't exist" });
         }
