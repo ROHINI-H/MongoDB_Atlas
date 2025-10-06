@@ -27,7 +27,3 @@ const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`SERVER CONNECTED AT PORT: ${PORT}`);
 })
-
-// hrohini19_db_user
-// BIfLFrgCbsKmUGu3
-// mongodb+srv://hrohini19_db_user:BIfLFrgCbsKmUGu3@cluster0.pzauxqz.mongodb.net/
